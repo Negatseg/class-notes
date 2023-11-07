@@ -1,0 +1,17 @@
+{
+  "name": "notes-saver",
+  "version": "1.0.0",
+  "description": "Introduction: This code is written to create an application called Note Taker that can be used to write and save notes. This application will use an Express.js back end and will save and retrieve note data from a JSON file. Objective: To fullfill the requirements of Module 11 challenge for the fullstack course at Bootcamp.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "path": "^0.12.7"
+  }
+}

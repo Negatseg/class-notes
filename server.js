@@ -14,23 +14,24 @@ app.get('/notes', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'notes.html'));
 });
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-
 // API routes
 app.get('/api/notes', (req, res) => {
-  const notes = JSON.parse(fs.readFileSync(path.join(__dirname, 'db.json')));
+  //const notes = JSON.parse(fs.readFileSync(path.join(__dirname, 'db.json')));
+  const notes = JSON.parse(fs.readFileSync('./db/db.json', 'utf-8'));
   res.json(notes);
 });
 
 app.post('/api/notes', (req, res) => {
   const newNote = req.body;
-  const notes = JSON.parse(fs.readFileSync(path.join(__dirname, 'db.json')));
+  const notes = JSON.parse(fs.readFileSync('./db/db.json', 'utf-8'));
   newNote.id = generateUniqueId(); // Implement a function to generate a unique ID
   notes.push(newNote);
-  fs.writeFileSync(path.join(__dirname, 'db.json'), JSON.stringify(notes));
-  res.json(newNote);
+  fs.writeFileSync('./db/db.json', JSON.stringify(notes));
+  res.json(notes);
+});
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // Start the server
